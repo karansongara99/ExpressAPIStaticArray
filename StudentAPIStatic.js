@@ -1436,7 +1436,7 @@ app.patch('/student/updateStudent', (req, res) => {
 })
 
 //Delete Student Data
-app.delete('student/deleteStudent', (req, res) => {
+app.delete('/student/deleteStudent', (req, res) => {
   const id = req.params.id
   const index = spiData.findIndex(temp => temp.id == id)
   spiData.splice(index, 1)
@@ -1444,7 +1444,7 @@ app.delete('student/deleteStudent', (req, res) => {
 })
 
 //SPI More than 5
-app.get('spi/more/:spi', (req, res) => {
+app.get('/spi/more/:spi', (req, res) => {
   const spi = req.params.spi
   const data = spiData.filter(temp => temp.spi > spi)
   const ans = {
@@ -1456,7 +1456,7 @@ app.get('spi/more/:spi', (req, res) => {
 })
 
 //SPI Less than 5
-app.get('spi/less/:spi', (req, res) => {
+app.get('/spi/less/:spi', (req, res) => {
   const spi = req.params.spi
   const data = spiData.filter(temp => temp.spi < spi)
   const ans = {

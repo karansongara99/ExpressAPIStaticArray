@@ -311,7 +311,7 @@ const laptops = [
 // task 3: print laptops with ramsize grater then 30000
 
 //Get All laptops  
-app.get('laptop',(req,res)=>{
+app.get('/laptop',(req,res)=>{
     const ans  = {
         isSuccess:true,
         count:laptops.length,
@@ -344,7 +344,7 @@ app.post('/laptop/insertData',(req,res)=>{
 })
 
 //Update Data
-app.patch('/laptop/updateData/',(req,res)=>{
+app.patch('/laptop/updateData/:id',(req,res)=>{
     const id = req.params.id;
     const data = laptops.findIndex(temp => temp.id === id);
     laptops[data] = req.body;
@@ -352,7 +352,7 @@ app.patch('/laptop/updateData/',(req,res)=>{
 })
 
 //Delete Data
-app.delete('/laptop/deleteData',(req,res)=>{
+app.delete('/laptop/deleteData/:id',(req,res)=>{
     const id = req.params.id;
     const data = laptops.findIndex(temp => temp.id === id);
     laptops.splice(data,1);
@@ -361,9 +361,9 @@ app.delete('/laptop/deleteData',(req,res)=>{
 })
 
 //RamSize More Than 30000
-app.get('laptop/ramsize',(req,res)=>{
-    const id = req.params.id;
-    const data = laptops.filter(temp=>temp.LaptopRamSize > 30000)
+app.get('/laptop/ramsize/:num',(req,res)=>{
+    const num = req.params.num;
+    const data = laptops.filter(temp=>temp.LaptopRamSize > num)
     const ans = {
         isSuccess:true,
         count:data.length,
